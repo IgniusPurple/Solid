@@ -43,15 +43,15 @@ $order->sendEmailNotification();
 ## **Problemas no Código Original** (app.php)
 
 
-**1**.**Responsabilidade Única** : A classe **Order** realiza cálculos, salva dados no banco de dados e envia notificações, o que viola o princípio da responsabilidade única.
+**1.    Responsabilidade Única** : A classe **Order** realiza cálculos, salva dados no banco de dados e envia notificações, o que viola o princípio da responsabilidade única.
 
-**2.** **Aberto/Fechado** : A classe **Order** precisa ser alterada caso haja mudança na forma de calcular o total ou de enviar notificações, o que viola o princípio de estar aberta para extensão, mas fechada para modificação.
+**2.    Aberto/Fechado** : A classe **Order** precisa ser alterada caso haja mudança na forma de calcular o total ou de enviar notificações, o que viola o princípio de estar aberta para extensão, mas fechada para modificação.
 
-**3.** **Substituição de Liskov** : Não está claro no código, mas em casos mais complexos, a falta de aderência ao princípio pode gerar problemas em subclasses que deveriam ser intercambiáveis com a classe base.
+**3.    Substituição de Liskov** : Não está claro no código, mas em casos mais complexos, a falta de aderência ao princípio pode gerar problemas em subclasses que deveriam ser intercambiáveis com a classe base.
     
-**4.**	**Segregação de Interface** : A classe **Order** possui métodos que talvez nem todas as instâncias precisem usar. Isso pode ser problemático, pois força a implementação de métodos desnecessários em determinadas situações.
+**4.    Segregação de Interface** : A classe **Order** possui métodos que talvez nem todas as instâncias precisem usar. Isso pode ser problemático, pois força a implementação de métodos desnecessários em determinadas situações.
 
-**5.** **Inversão de Dependência** : **Order** depende diretamente de implementações específicas para armazenamento e notificação, dificultando a flexibilidade e manutenção do código.
+**5.    Inversão de Dependência** : **Order** depende diretamente de implementações específicas para armazenamento e notificação, dificultando a flexibilidade e manutenção do código.
 
 ## **Código Refatorado com SOLID** (app_solid.php)
 ```php
