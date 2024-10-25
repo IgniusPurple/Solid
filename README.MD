@@ -121,9 +121,13 @@ $order->process($items);
 ## **Explicação das Mudanças e Benefícios para a Qualidade do Código**
 
 **1.	Responsabilidade Única (Single Responsibility Principle):** A classe ***Order*** agora apenas coordena o pedido, enquanto **OrderCalculator** cuida do cálculo, **DatabaseStorage** do armazenamento e **EmailNotification** da notificação. Isso torna cada classe responsável por uma única tarefa, facilitando o entendimento e a manutenção.
+
 **2.	Aberto/Fechado (Open/Closed Principle):** **Order** pode agora ser estendida sem modificações. Para adicionar uma nova forma de notificação (ex.: SMS) ou armazenamento (ex.: API), basta criar novas classes que implementem **NotificationService** ou **OrderStorage**, sem alterar o código existente.
+
 **3.	Substituição de Liskov (Liskov Substitution Principle):** Interfaces **OrderStorage** e **NotificationService** garantem que qualquer implementação dessas possa ser usada em Order sem problemas, mantendo o comportamento esperado. Isso proporciona flexibilidade e evita erros de substituição.
+
 **4.	Segregação de Interface (Interface Segregation Principle):** Interfaces **OrderStorage** e **NotificationService** definem contratos específicos e independentes para cada responsabilidade, impedindo que classes dependam de métodos que não utilizam.
+
 **5.	Inversão de Dependência (Dependency Inversion Principle)**: Order agora depende das abstrações **OrderStorage** e **NotificationService**, e não de classes concretas, permitindo substituição fácil por outras implementações (por exemplo, salvar em arquivo ou enviar SMS).
 
 
